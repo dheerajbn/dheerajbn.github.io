@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dheeraj Beliya — Freelance Product Engineer</title>
+<meta name="description" content="Freelance engineer with 8 years of experience building POCs, MVPs and production-grade apps for early-stage startups.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #FFF5F5;
+    --ink: #1f1a1c;
+    --muted: #6b5f63;
+    --accent: #c2414b;
+    --line: #f1dede;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, system-ui, sans-serif; background: var(--primary); color: var(--ink); line-height: 1.6; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.15; }
+  a { color: inherit; }
+
+  nav { position: sticky; top: 0; background: rgba(255,245,245,.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+  nav .logo { font-family: Fraunces, serif; font-weight: 700; font-size: 1.25rem; text-decoration: none; }
+  nav ul { display: flex; gap: 28px; list-style: none; padding: 0; }
+  nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: .95rem; }
+  nav ul a:hover { color: var(--accent); }
+
+  .btn { display: inline-block; padding: 14px 28px; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 600; transition: background .2s, transform .2s; }
+  .btn:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: #fff; }
+
+  .hero { padding: 110px 0 90px; }
+  .eyebrow { color: var(--accent); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); margin: 16px 0 24px; max-width: 16ch; }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero p { font-size: 1.2rem; color: var(--muted); max-width: 56ch; margin-bottom: 36px; }
+  .hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .stats { display: flex; gap: 56px; margin-top: 72px; flex-wrap: wrap; }
+  .stats b { display: block; font-family: Fraunces, serif; font-size: 2.6rem; }
+  .stats span { color: var(--muted); font-size: .95rem; }
+
+  section { padding: 90px 0; }
+  section h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 10px 0 14px; }
+  section .lead { color: var(--muted); max-width: 60ch; margin-bottom: 48px; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; }
+  .skill { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px 16px; text-align: center; transition: transform .2s, box-shadow .2s; }
+  .skill:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(194,65,75,.12); }
+  .skill img { width: 56px; height: 56px; object-fit: contain; }
+  .skill p { margin-top: 14px; font-weight: 600; }
+
+  .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+  .card { position: relative; min-height: 260px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); overflow: hidden; cursor: pointer; outline: none; }
+  .card .front { padding: 32px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; }
+  .card .num { font-family: Fraunces, serif; color: var(--accent); font-size: 1rem; }
+  .card h3 { font-size: 1.8rem; margin: 8px 0 6px; }
+  .card .tag { color: var(--muted); }
+  .card .hint { font-size: .85rem; color: var(--muted); }
+  .badge { display: inline-block; font-size: .75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--primary); color: var(--accent); border: 1px solid var(--line); margin-left: 6px; vertical-align: middle; font-family: Inter, sans-serif; }
+  .card .details { position: absolute; inset: 0; padding: 32px; background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .3s; pointer-events: none; }
+  .card .details h3 { font-size: 1.5rem; margin-bottom: 12px; }
+  .card .details p { color: #e9dcdf; }
+  .card:hover .details, .card:focus .details, .card:focus-within .details { opacity: 1; transform: none; }
+  .card:focus-visible { box-shadow: 0 0 0 3px var(--accent); }
+
+  .contact { background: var(--ink); color: #fff; border-radius: 32px; padding: 72px 48px; text-align: center; }
+  .contact h2 { color: #fff; }
+  .contact p { color: #d9cccf; max-width: 52ch; margin: 0 auto 32px; }
+  .contact .btn { background: var(--primary); color: var(--ink); }
+  .contact .btn:hover { background: var(--accent); color: #fff; }
+  .reach summary { list-style: none; cursor: pointer; }
+  .reach summary::-webkit-details-marker { display: none; }
+  .reach[open] summary { display: none; }
+  .reach-options { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .reach-options .btn { display: inline-flex; align-items: center; gap: 10px; }
+  .reach-options img { width: 20px; height: 20px; }
+  .contact .mail-fallback { margin: 20px auto 0; font-size: .95rem; }
+  .contact .mail-fallback a { color: #fff; font-weight: 600; user-select: all; }
+
+  footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .hero { padding: 64px 0 56px; }
+    .stats { gap: 32px; }
+    section { padding: 64px 0; }
+    .contact { padding: 56px 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Dheeraj Beliya</a>
+    <ul>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Freelance Product Engineer</span>
+    <h1>From idea to <em>production</em>, fast.</h1>
+    <p>I help early-stage startups build POCs, MVPs and production-grade applications across mobile, web and cloud — so you can validate quickly and scale with confidence.</p>
+    <div class="ctas">
+      <a href="#contact" class="btn">Start a project</a>
+      <a href="#work" class="btn ghost">See my work</a>
+    </div>
+    <div class="stats">
+      <div><b>8+</b><span>Years of experience</span></div>
+      <div><b>5</b><span>Products shipped &amp; in progress</span></div>
+      <div><b>End-to-end</b><span>Mobile · Web · Cloud</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow">Skills</span>
+    <h2>One engineer, full stack.</h2>
+    <p class="lead">Native mobile apps, modern web frontends, scalable backends and the cloud infrastructure to run them.</p>
+    <div class="skills">
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" alt=""><p>Android</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg" alt=""><p>iOS</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt=""><p>Node.js</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt=""><p>React.js</p></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt=""><p>AWS</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow">Selected work</span>
+    <h2>Projects</h2>
+    <p class="lead">Hover or tap a card to see what I built.</p>
+    <div class="projects">
+      <article class="card" tabindex="0">
+        <div class="front">
+          <div><span class="num">01</span><h3>FetalLite</h3><p class="tag">Cloud data management for fetal &amp; maternal health</p></div>
+          <span class="hint">Hover or tap for details →</span>
+        </div>
+        <div class="details"><h3>FetalLite</h3><p>Built a cloud data management tool to collect and visualize data from an offline-first app that tracks fetal and maternal heart rates for pregnant women.</p></div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="front">
+          <div><span class="num">02</span><h3>VidhTek</h3><p class="tag">Student data management</p></div>
+          <span class="hint">Hover or tap for details →</span>
+        </div>
+        <div class="details"><h3>VidhTek</h3><p>A school management platform to collect student data, manage fee collection and print receipts.</p></div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="front">
+          <div><span class="num">03</span><h3>Notessa</h3><p class="tag">AI-powered email generation &amp; targeting</p></div>
+          <span class="hint">Hover or tap for details →</span>
+        </div>
+        <div class="details"><h3>Notessa</h3><p>An AI-first tool that generates emails from a prompt, builds templates from previous conversations and suggests the right target audience.</p></div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="front">
+          <div><span class="num">04</span><h3>Workflows</h3><p class="tag">Automated response management</p></div>
+          <span class="hint">Hover or tap for details →</span>
+        </div>
+        <div class="details"><h3>Workflows</h3><p>Sends follow-up communications automatically based on email engagement — opens, clicks and more.</p></div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="front">
+          <div><span class="num">05</span><h3>Auskey <span class="badge">Ongoing</span></h3><p class="tag">Real-time remote auscultation</p></div>
+          <span class="hint">Hover or tap for details →</span>
+        </div>
+        <div class="details"><h3>Auskey</h3><p>Streams stethoscope data in real time to a remote dashboard, letting doctors listen in live and guide the nurse on-site.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <span class="eyebrow">Let's work together</span>
+      <h2>Have an idea? Let's build it.</h2>
+      <p>Whether you need a quick proof of concept, an MVP for your next pitch, or a production-ready app — I'd love to hear about it.</p>
+      <details class="reach">
+        <summary class="btn">Get in touch</summary>
+        <div class="reach-options">
+          <a href="mailto:dheerajbn7@gmail.com" class="btn" id="mail-btn"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg" alt="">Email</a>
+          <a href="https://wa.me/917259093487" class="btn" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/whatsapp.svg" alt="">WhatsApp</a>
+        </div>
+      </details>
+      <p class="mail-fallback" id="mail-fallback" role="status" hidden>Mail app didn’t open? Reach me at <a href="mailto:dheerajbn7@gmail.com">dheerajbn7@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Dheeraj Beliya · Freelance Product Engineer</footer>
+
+<script>
+  // Browsers can't report mailto failure; if the page never loses focus, assume no mail app opened.
+  document.getElementById('mail-btn').addEventListener('click', () => {
+    let left = false;
+    const onBlur = () => left = true;
+    window.addEventListener('blur', onBlur, { once: true });
+    setTimeout(() => {
+      window.removeEventListener('blur', onBlur);
+      if (!left) document.getElementById('mail-fallback').hidden = false;
+    }, 1000);
+  });
+</script>
+
+</body>
+</html>
